@@ -1,0 +1,266 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins:wght@500;600&display=swap');
+
+@layer base {
+    /*
+        Styling Base Component
+    */
+    body {
+        @apply font-poppins
+    }
+
+    section {
+        @apply py-16 min-h-screen
+    }
+
+    .reveal {
+        position: relative;
+        transform: translateY(150px);
+        opacity: 0;
+        transition: all 1s ease;
+    }
+
+    .reveal.active {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    /*
+        START: STYLING HOME SECTION
+    */
+    .home {
+        background-image: url(home.png);
+        background-size: cover;
+    }
+
+    .home button {
+        padding: 1em 1.8em;
+        border: 1px solid rgb(20, 20, 20);
+        background: rgb(20, 20, 20);
+        color: rgb(240, 20, 240);
+        transition: 0.2s;
+        min-width: 12rem;
+    }
+
+    .home button:hover {
+        box-shadow: 0 0 10px rgb(240, 20, 240), 0 0 25px rgb(25, 25, 250), 0 0 50px rgb(240, 20, 240);
+        transition-delay: 0.6s;
+    }
+
+    .home button span {
+        position: absolute;
+    }
+
+    .home button span:nth-child(1) {
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, rgb(240, 20, 240));
+    }
+
+    .home button:hover span:nth-child(1) {
+        left: 100%;
+        transition: 0.7s;
+    }
+
+    .home button span:nth-child(3) {
+        bottom: 0;
+        right: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, rgb(25, 25, 250));
+    }
+
+    .home button:hover span:nth-child(3) {
+        right: 100%;
+        transition: 0.7s;
+        transition-delay: 0.35s;
+    }
+
+    .home button span:nth-child(2) {
+        top: -100%;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(180deg, transparent, rgb(240, 20, 240));
+    }
+
+    .home button:hover span:nth-child(2) {
+        top: 100%;
+        transition: 0.7s;
+        transition-delay: 0.17s;
+    }
+
+    .home button span:nth-child(4) {
+        bottom: -100%;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(360deg, transparent, rgb(25, 25, 250));
+    }
+
+    .home button:hover span:nth-child(4) {
+        bottom: 100%;
+        transition: 0.7s;
+        transition-delay: 0.52s;
+    }
+
+    .home button:active {
+        background: rgb(240, 20, 240);
+        background: linear-gradient(to top right, rgb(240, 20, 240), rgb(25, 25, 250));
+        color: #bfbfbf;
+        box-shadow: 0 0 8px rgb(240, 20, 240), 0 0 8px rgb(25, 25, 250), 0 0 8px rgb(240, 20, 240);
+        transition: 0.1s;
+    }
+
+    .home button:active span:nth-child(1)
+    span:nth-child(2)
+    span:nth-child(2)
+    span:nth-child(2) {
+        transition: none;
+        transition-delay: none;
+    }
+
+    /*
+        END: STYLING HOME SECTION
+    */
+
+    /*
+        START: STYLING GALLERY SECTION
+    */
+    .gallery .button {
+        padding: 15px 20px;
+        background: transparent;
+        z-index: 1;
+    }
+
+    .gallery .button::after,
+    .gallery .button::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: -99999;
+        transition: all .4s;
+    }
+
+    .gallery .button::before {
+        transform: translate(0%, 0%);
+        width: 100%;
+        height: 100%;
+        background: rgb(14, 165, 233);
+        border-radius: 10px;
+    }
+
+    .gallery .button::after {
+        transform: translate(10px, 10px);
+        width: 45px;
+        height: 45px;
+        background: rgba(20, 20, 240, 0.5);
+        backdrop-filter: blur(4px);
+        border-radius: 50px;
+    }
+
+    .gallery .button:hover::before {
+        transform: translate(5%, 20%);
+        width: 110%;
+        height: 110%;
+    }
+
+    .gallery .button:hover::after {
+        border-radius: 10px;
+        transform: translate(0, 0);
+        width: 100%;
+        height: 100%;
+    }
+
+    .gallery .button:active::after {
+        transition: 0s;
+        transform: translate(0, 5%);
+    }
+    /*
+        END: STYLING GALLERY SECTION
+    */
+
+
+    /*
+        START: STYLING CONTACT
+    */
+    .contact .wrapper .icon {
+        border-radius: 50%;
+        margin: 10px;
+        width: 50px;
+        height: 50px;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .contact .wrapper .tooltip {
+        position: absolute;
+        top: 0;
+        font-size: 0.8rem;
+        background: rgb(240, 240, 240);
+        color: rgb(240, 240, 240);
+        width: 100px;
+        padding: 8px 8px;
+        border-radius: 5px;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .contact .wrapper .tooltip::before {
+        position: absolute;
+        content: "";
+        height: 8px;
+        width: 8px;
+        background: rgb(240, 240, 240);
+        color: rgb(24, 24, 24);
+        bottom: -3px;
+        left: 50%;
+        transform: translate(-50%) rotate(45deg);
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .contact .wrapper .icon:hover .tooltip {
+        top: -45px;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .contact .wrapper .icon:hover span,
+    .contact .wrapper .icon:hover .tooltip {
+        text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact .wrapper .whatsapp:hover,
+    .contact .wrapper .whatsapp:hover .tooltip,
+    .contact .wrapper .whatsapp:hover .tooltip::before {
+        background: linear-gradient(to bottom, rgb(10, 180, 140), rgb(20, 200, 170));
+        color: rgb(240, 240, 240);
+      }
+
+    .contact .wrapper .github:hover,
+    .contact .wrapper .github:hover .tooltip,
+    .contact .wrapper .github:hover .tooltip::before {
+        background: linear-gradient(to bottom, rgb(15, 15, 15), rgb(30, 30, 30));
+        color: rgb(240, 240, 240);
+    }
+
+    .contact .wrapper .ui-verse:hover,
+    .contact .wrapper .ui-verse:hover .tooltip,
+    .contact .wrapper .ui-verse:hover .tooltip::before {
+        background: linear-gradient(to bottom, rgb(25, 25, 250), rgb(250, 25, 250));
+        color: rgb(240, 240, 240);
+    }
+}
+
+@layer components {
+    nav {
+        @apply fixed inset-x-0 z-10 py-6
+    }
+}
